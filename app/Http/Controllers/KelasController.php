@@ -19,7 +19,7 @@ class KelasController extends Controller
         }
 
         // Jika request adalah AJAX (dari JS kita), kirim data JSON
-        $kelases = kelas::orderBy('id', 'desc')->get();
+        $kelases = kelas::orderBy('id', 'asc')->get();
         return response()->json($kelases);
 
     }

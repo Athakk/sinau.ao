@@ -7,14 +7,14 @@ use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
-{
+{ 
     function index() {
         if (!request()->ajax()) {
             return view('admin.user.index');
         }
 
         // Jika request adalah AJAX (dari JS kita), kirim data JSON
-        $users = User::orderBy('id', 'desc')->get();
+        $users = User::orderBy('id', 'asc')->get();
         return response()->json($users);
     }
 

@@ -180,6 +180,12 @@
                 <div data-i18n="Analytics">Kelas</div>
               </a>
             </li>
+            <li class="menu-item {{ explode('.', Route::current()->getName())[0] == 'userKelas' ? 'active' : '' }}">
+              <a href="{{ route('userKelas.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-chart"></i>
+                <div data-i18n="Analytics">History Pembelian</div>
+              </a>
+            </li>
             <li class="menu-header small text-uppercase">
               <span class="menu-header-text">Master</span>
             </li>

@@ -48,4 +48,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function kelases()
+    {
+        return $this->belongsToMany(Kelas::class, 'user_kelas');
+    }
 }

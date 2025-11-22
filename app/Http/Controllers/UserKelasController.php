@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserKelas;
+use Dflydev\DotAccessData\Data;
 use Illuminate\Http\Request;
 
 class UserKelasController extends Controller
@@ -12,7 +13,13 @@ class UserKelasController extends Controller
      */
     public function index()
     {
-        //
+        if (!request()->ajax()) {
+            return view('admin.histori.index');
+        }
+        
+        // Jika request adalah AJAX (dari JS kita), kirim data JSON
+        $data = UserKelas::with(['user', 'kelas'])->orderBy('id', 'desc')->get();
+        return response()->json($data);
     }
 
     /**

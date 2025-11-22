@@ -19,4 +19,10 @@ class Kelas extends Model
     {
         return $this->hasMany(Materi::class, 'kelas_id', 'id');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_kelas');
+    }
+
 }
