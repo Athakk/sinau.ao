@@ -92,16 +92,20 @@
                                     searchable: false,
                                     render: function(data, type, row) {
 
+                                        var materiUrl =
+                                            "{{ route('materi.index', ':id') }}";
                                         var editUrl =
                                             "{{ route('kelas.edit', ':id') }}";
                                         var deleteUrl =
                                             "{{ route('kelas.destroy', ':id') }}";
 
+
+                                        materiUrl = materiUrl.replace(':id', data);
                                         editUrl = editUrl.replace(':id', data);
                                         deleteUrl = deleteUrl.replace(':id', data);
 
                                         return `
-                                        <a href="}">
+                                        <a href="${materiUrl}}">
                                             <button type="button" class="btn btn-icon btn-info">
                                                 <span class="tf-icons bx bx-list-ul"></span>
                                             </button>

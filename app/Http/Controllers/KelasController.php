@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Kelas;
 use Illuminate\Http\Request;
+use Laravel\Pail\File;
+use Illuminate\Support\Facades\Storage;
 
 class KelasController extends Controller
 {
@@ -35,19 +37,36 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $request->validate([
             'judul' => 'required',
             'deskripsi' => 'nullable',
             'harga' => 'required',
+            'file' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'isReady' => 'nullable'
         ]);
 
-        if ($request->isReady == "on") {
-            $request['isReady'] = "yes";
-        } else {
-            $request['isReady'] = "no";
-        }
+        $data = [
+            'judul' => $request->judul,
+            'deskripsi' => $request->deskripsi,
+            'harga' => $request->harga,
+            'isReady'   => $request->has('isReady') ? 'yes' : 'no',        
+        ];
+
         
-        Kelas::create($request->all());
+
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $image_name = time() . '-' . $file->getClientOriginalName();
+            
+            $path = $file->storeAs('kelas', $image_name, 'public');
+            
+            $data['image'] = $image_name;
+            unset($request['file']);
+        }
+            
+        Kelas::create($data);
         
         return redirect()->route('kelas.index')->with('success', 'Kelas berhasil ditambah!');
 
@@ -81,31 +100,49 @@ class KelasController extends Controller
             'judul' => 'required',
             'deskripsi' => 'nullable',
             'harga' => 'required',
+            'file' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'isReady' => 'nullable'
         ]);
 
-        if ($request->isReady == "on") {
-            $request['isReady'] = "yes";
-        } else {
-            $request['isReady'] = "no";
-        }
+        if ($request->hasFile('file')) {
+            if ($kelas->image) { 
+                Storage::disk('public')->delete('kelas/' . $kelas->image);
+            }
 
+            $file = $request->file('file');
+            $image_name = time() . '-' . $file->getClientOriginalName();
+            
+            $path = $file->storeAs('kelas', $image_name, 'public');
+            
+            $kelas->image = $image_name;
+            unset($request['file']);
+        }
         
         $kelas->judul = $request->judul;
         $kelas->deskripsi = $request->deskripsi;
         $kelas->harga = $request->harga;
-        $kelas->isReady = $request->isReady;
-        $kelas->update();
+        $kelas->isReady = $request->has('isReady') ? 'yes' : 'no';
+        $kelas->save();
 
 
         
-        return redirect()->route('kelas.index')->with('success', 'Kelas berhasil ditambah!');
+        return redirect()->route('kelas.index')->with('success', 'Kelas berhasil diubah!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Kelas $kelas)
+    public function destroy($id)
     {
-        //
+        $kelas = Kelas::find($id);
+
+        if ($kelas->image) {
+            Storage::disk('public')->delete('kelas/' . $kelas->image);
+        }
+
+        Kelas::destroy($kelas->id);
+        return response()->json(['status' => 'Kelas berhasil dihapus!'])->with('success', 'Kelas berhasil dihapus!');
+
+
     }
 }

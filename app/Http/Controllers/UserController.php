@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -69,6 +70,11 @@ class UserController extends Controller
     }
 
     function destroy(User $user) {
+        // if (Auth::user()->id == $user->id) {
+        //     return redirect()->route('user.index')->with('error', 'Tidak bisa menghapus user!');
+        // }
+
+
         User::destroy($user->id);
         return response()->json(['status' => 'User berhasil dihapus!'])->with('success', 'User berhasil dihapus!');
 

@@ -28,7 +28,7 @@
                         <div class="col-6">
                             <div class="mb-3">
                                 <label class="form-label" for="file">Image</label>
-                                <input type="file" class="dropify form-control" id="image" name="image" />
+                                <input type="file" class="dropify form-control" id="file" name="file" />
                             </div>
                         </div>
                         <div class="col-6">
@@ -44,7 +44,7 @@
                                 <div class="col-md-10">
                                     <div class="input-group">
                                         <span class="input-group-text" id="basic-addon1">Rp</span>
-                                        <input type="text" class="form-control" placeholder="harga" aria-label="harga"
+                                        <input type="number" class="form-control" placeholder="0" aria-label="harga"
                                             aria-describedby="basic-addon1" id="harga" name="harga">
                                     </div>
                                 </div>

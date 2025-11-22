@@ -28,12 +28,14 @@
                     @csrf
                     @method('PUT')
 
+
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label class="form-label" for="image">Image</label>
-                                <input type="file" class="dropify form-control" id="image" name="image"
-                                    data-default-file="{{ asset('storage/' . $kelas->image) }}" />
+                                <input type="file" class="dropify form-control" id="file" name="file"
+                                    data-default-file="{{ asset('storage/kelas' . $kelas->image) }}" />
                                 <small class="text-muted">Kosongkan jika tidak ingin mengubah gambar.</small>
                             </div>
                         </div>

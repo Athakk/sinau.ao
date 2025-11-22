@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kelas;
 use App\Models\Materi;
 use Illuminate\Http\Request;
 
@@ -10,9 +11,15 @@ class MateriController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Kelas $kelas)
     {
-        //
+
+        if (!request()->ajax()) {
+            return view('admin.kelas.materi.index');
+        }
+
+        return response()->json($kelas->materis);
+
     }
 
     /**
