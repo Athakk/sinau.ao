@@ -11,14 +11,18 @@ class MateriController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Kelas $kelas)
+    public function index($id)
     {
 
+        $kelas = Kelas::find($id);
+        
         if (!request()->ajax()) {
-            return view('admin.kelas.materi.index');
+            return view('admin.kelas.materi.index', compact('kelas'));
         }
 
-        return response()->json($kelas->materis);
+        return response()->json([
+            'materis' => $kelas->materis,
+        ]);
 
     }
 

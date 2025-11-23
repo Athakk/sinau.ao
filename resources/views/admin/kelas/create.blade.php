@@ -7,7 +7,7 @@
         <div class="card mb-4">
             <div class="card-header d-flex align-items-center justify-content-between">
                 <h5 class="mb-4 text-gray-800">Tambah Kelas</h5>
-                <a href="{{ route('kelas.index') }}">
+                <a href="{{ route('admin.kelas.index') }}">
                     <button type="button" class="btn btn btn-outline-danger" fdprocessedid="g81fsj"><i
                             class='bx bxs-chevron-left'></i>&nbsp;Kembali</button>
                 </a>
@@ -22,7 +22,7 @@
                         </ul>
                     </div>
                 @endif
-                <form action="{{ route('kelas.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('admin.kelas.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-6">

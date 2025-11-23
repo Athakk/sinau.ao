@@ -7,7 +7,7 @@
         <div class="card mb-4">
             <div class="card-header d-flex align-items-center justify-content-between">
                 <h5 class="mb-0">Edit Kelas</h5>
-                <a href="{{ route('kelas.index') }}">
+                <a href="{{ route('admin.kelas.index') }}">
                     <button type="button" class="btn btn-outline-danger">
                         <i class='bx bxs-chevron-left'></i>&nbsp;Kembali
                     </button>
@@ -24,7 +24,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('kelas.update', $kelas->id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('admin.kelas.update', $kelas->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 

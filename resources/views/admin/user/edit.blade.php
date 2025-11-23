@@ -7,7 +7,7 @@
         <div class="card mb-4">
             <div class="card-header d-flex align-items-center justify-content-between">
                 <h5 class="mb-0">Edit User</h5>
-                <a href="{{ route('user.index') }}">
+                <a href="{{ route('admin.user.index') }}">
                     <button type="button" class="btn btn btn-outline-danger" fdprocessedid="g81fsj"><i
                             class='bx bxs-chevron-left'></i>&nbsp;Kembali</button>
                 </a>
@@ -23,15 +23,15 @@
                     </div>
                 @endif
 
-                <form action="{{ route('user.update', $user->id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('admin.user.update', $user->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="row">
                         <div class="col-6">
                             <div class="mb-3">
-                                <label class="form-label" for="file">Avatar</label>
                                 <input type="file" class="dropify form-control" id="file" name="file"
-                                    data-default-file="{{ asset('storage/user/' . $user->avatar) }}" />
+                                    data-default-file="{{ $user->avatar ? asset('storage/user/' . $user->avatar) : '' }}" />
+                                <small class="text-muted">Kosongkan jika tidak ingin mengubah gambar.</small>
                             </div>
                         </div>
                         <div class="col-6">

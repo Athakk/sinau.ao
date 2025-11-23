@@ -10,7 +10,7 @@
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h4 class="fw-bold m-0">Histori Pembelian</h4>
                 <div class="d-flex gap-1 justify-content-end align-items-center">
-                    {{-- <a href="{{ route('user.create') }}">
+                    {{-- <a href="{{ route('admin.user.create') }}">
                         <button type="button" class="btn btn-primary">
                             <span class="tf-icons bx bx-plus"></span>&nbsp;Tambah User</button>
                     </a> --}}
@@ -95,9 +95,9 @@
                                 //     searchable: false,
                                 //     render: function(data) {
 
-                                //         var editUrl = "{{ route('user.edit', ':id') }}";
+                                //         var editUrl = "{{ route('admin.user.edit', ':id') }}";
                                 //         var deleteUrl =
-                                //             "{{ route('user.destroy', ':id') }}";
+                                //             "{{ route('admin.user.destroy', ':id') }}";
 
                                 //         editUrl = editUrl.replace(':id', data);
                                 //         deleteUrl = deleteUrl.replace(':id', data);

@@ -10,7 +10,7 @@
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h4 class="fw-bold m-0">Kelas</h4>
                 <div class="d-flex gap-1 justify-content-end align-items-center">
-                    <a href="{{ route('kelas.create') }}">
+                    <a href="{{ route('admin.kelas.create') }}">
                         <button type="button" class="btn btn-primary">
                             <span class="tf-icons bx bx-plus"></span>&nbsp;Tambah Kelas</button>
                     </a>
@@ -93,19 +93,20 @@
                                     render: function(data, type, row) {
 
                                         var materiUrl =
-                                            "{{ route('materi.index', ':id') }}";
+                                            "{{ route('admin.kelas.materi.index', ':id') }}";
                                         var editUrl =
-                                            "{{ route('kelas.edit', ':id') }}";
+                                            "{{ route('admin.kelas.edit', ':id') }}";
                                         var deleteUrl =
-                                            "{{ route('kelas.destroy', ':id') }}";
+                                            "{{ route('admin.kelas.destroy', ':id') }}";
 
 
                                         materiUrl = materiUrl.replace(':id', data);
                                         editUrl = editUrl.replace(':id', data);
                                         deleteUrl = deleteUrl.replace(':id', data);
 
+
                                         return `
-                                        <a href="${materiUrl}}">
+                                        <a href="${materiUrl}">
                                             <button type="button" class="btn btn-icon btn-info">
                                                 <span class="tf-icons bx bx-list-ul"></span>
                                             </button>

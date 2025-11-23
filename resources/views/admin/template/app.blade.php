@@ -168,20 +168,20 @@
 
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-item {{ Route::current()->getName() == 'dashboard' ? 'active' : '' }}">
-              <a href="{{ route('dashboard') }}" class="menu-link">
+            <li class="menu-item {{ explode('.', Route::current()->getName())[1] == 'dashboard' ? 'active' : '' }}">
+              <a href="{{ route('admin.dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
             </li>
-            <li class="menu-item {{ explode('.', Route::current()->getName())[0] == 'kelas' ? 'active' : '' }}">
-              <a href="{{ route('kelas.index') }}" class="menu-link">
+            <li class="menu-item {{ explode('.', Route::current()->getName())[1] == 'kelas' ? 'active' : '' }}">
+              <a href="{{ route('admin.kelas.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-book"></i>
                 <div data-i18n="Analytics">Kelas</div>
               </a>
             </li>
-            <li class="menu-item {{ explode('.', Route::current()->getName())[0] == 'userKelas' ? 'active' : '' }}">
-              <a href="{{ route('userKelas.index') }}" class="menu-link">
+            <li class="menu-item {{ explode('.', Route::current()->getName())[1] == 'userKelas' ? 'active' : '' }}">
+              <a href="{{ route('admin.userKelas.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-chart"></i>
                 <div data-i18n="Analytics">History Pembelian</div>
               </a>
@@ -189,8 +189,8 @@
             <li class="menu-header small text-uppercase">
               <span class="menu-header-text">Master</span>
             </li>
-            <li class="menu-item {{ explode('.', Route::current()->getName())[0] == 'user' ? 'active' : '' }}">
-              <a href="{{ route('user.index') }}" class="menu-link">
+            <li class="menu-item {{ explode('.', Route::current()->getName())[1] == 'user' ? 'active' : '' }}">
+              <a href="{{ route('admin.user.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user"></i>
                 <div data-i18n="Analytics">User</div>
               </a>
