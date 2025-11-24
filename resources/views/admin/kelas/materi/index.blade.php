@@ -9,8 +9,12 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h4 class="fw-bold m-0"> Materi Kelas - {{ $kelas->judul }}</h4>
-                <div class="d-flex gap-1 justify-content-end align-items-center">
-                    <a href="{{ route('admin.kelas.create') }}">
+                <div class="d-flex gap-2 justify-content-end align-items-center">
+                    <a href="{{ route('admin.kelas.index') }}">
+                        <button type="button" class="btn btn btn-outline-danger" fdprocessedid="g81fsj"><i
+                                class='bx bxs-chevron-left'></i>&nbsp;Kembali</button>
+                    </a>
+                    <a href="{{ route('admin.kelas.materi.create', $kelas->id) }}">
                         <button type="button" class="btn btn-primary">
                             <span class="tf-icons bx bx-plus"></span>&nbsp;Tambah Materi</button>
                     </a>
@@ -24,8 +28,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Judul</th>
-                                <th>Status</th>
-                                <th>Harga</th>
+                                <th>Link Video</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -49,17 +52,16 @@
             loadData();
 
             function loadData() {
-                url = '/materi/${$kelas->id}/kelas'
+                url = '/admin/kelas/{{ $kelas->id }}/materi'
 
                 $.ajax({
                     type: "GET",
                     url: url,
                     dataType: "json",
                     success: function(response) {
-                        console.log(response);
 
                         $('#myTable').DataTable({
-                            data: response,
+                            data: response.materis,
                             columns: [{
                                     data: null,
                                     render: function(data, type, row, meta) {
@@ -70,20 +72,13 @@
                                     data: 'judul'
                                 },
                                 {
-                                    data: 'isReady',
+                                    data: 'link_video',
+                                    orderable: false,
+                                    searchable: false,
                                     render: function(data) {
-                                        return data == "yes" ?
-                                            `<span class="badge rounded-pill bg-success">Ready</span>` :
-                                            `<span class="badge rounded-pill bg-danger">Not Ready</span>`;
-                                    }
-                                },
-                                {
-                                    data: 'harga',
-                                    render: function(data) {
-                                        return "Rp" + new Intl.NumberFormat(["ban",
-                                                "id"
-                                            ])
-                                            .format(data)
+                                        return `<a href="${data}">
+                                        ${data}
+                                        </a>`
                                     }
                                 },
                                 {
@@ -93,13 +88,19 @@
                                     render: function(data, type, row) {
 
                                         var editUrl =
-                                            "{{ route('admin.kelas.edit', ':id') }}";
+                                            "{{ route('admin.kelas.materi.edit', [':idKelas', ':idMateri']) }}";
                                         var deleteUrl =
-                                            "{{ route('admin.kelas.destroy', ':id') }}";
+                                            "{{ route('admin.kelas.materi.destroy', [':idKelas', ':idMateri']) }}";
 
 
-                                        editUrl = editUrl.replace(':id', data);
-                                        deleteUrl = deleteUrl.replace(':id', data);
+                                        editUrl = editUrl.replace(':idKelas', response
+                                            .kelas.id);
+                                        editUrl = editUrl.replace(':idMateri', data);
+                                        deleteUrl = deleteUrl.replace(':idKelas',
+                                            response
+                                            .kelas.id);
+                                        deleteUrl = deleteUrl.replace(':idMateri',
+                                            data);
 
                                         return `
                                         <a href="${editUrl}">

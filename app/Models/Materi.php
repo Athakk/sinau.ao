@@ -9,8 +9,8 @@ class Materi extends Model
     protected $fillable = [
         'judul',
         'deskripsi',
-        'image', 
-        'video',
+        'image',
+        'link_video',
         'kelas_id'
     ];
 

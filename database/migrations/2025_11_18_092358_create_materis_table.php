@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('judul');
             $table->text('deskripsi');
             $table->string('image')->nullable();
-            $table->string('video')->nullable();
+            $table->string('link_video')->nullable();
 
             $table->foreignIdFor(Kelas::class)->onDelete('restrict');
             
