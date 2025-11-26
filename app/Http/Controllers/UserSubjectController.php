@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UserKelas;
-use Dflydev\DotAccessData\Data;
+use App\Models\UserSubject;
 use Illuminate\Http\Request;
 
-class UserKelasController extends Controller
+class UserSubjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +17,7 @@ class UserKelasController extends Controller
         }
         
         // Jika request adalah AJAX (dari JS kita), kirim data JSON
-        $data = UserKelas::with(['user', 'kelas'])->orderBy('id', 'desc')->get();
+        $data = UserSubject::with(['user', 'subject'])->orderBy('id', 'desc')->get();
         return response()->json($data);
     }
 
@@ -41,7 +40,7 @@ class UserKelasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(UserKelas $userKelas)
+    public function show(UserSubject $userSubject)
     {
         //
     }
@@ -49,7 +48,7 @@ class UserKelasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(UserKelas $userKelas)
+    public function edit(UserSubject $userSubject)
     {
         //
     }
@@ -57,7 +56,7 @@ class UserKelasController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, UserKelas $userKelas)
+    public function update(Request $request, UserSubject $userSubject)
     {
         //
     }
@@ -65,7 +64,7 @@ class UserKelasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(UserKelas $userKelas)
+    public function destroy(UserSubject $userSubject)
     {
         //
     }

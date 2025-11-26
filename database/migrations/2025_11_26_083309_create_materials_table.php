@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Kelas;
+use App\Models\Subject;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,15 +12,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('materis', function (Blueprint $table) {
+        Schema::create('materials', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
             $table->text('deskripsi');
             $table->string('image')->nullable();
             $table->string('link_video')->nullable();
 
-            $table->foreignIdFor(Kelas::class)->onDelete('restrict');
-            
+            $table->foreignIdFor(Subject::class)->onDelete('restrict');
+
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('materis');
+        Schema::dropIfExists('materials');
     }
 };

@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kelas;
+use App\Models\Subject;
 use Illuminate\Http\Request;
-use Laravel\Pail\File;
 use Illuminate\Support\Facades\Storage;
 
-class KelasController extends Controller
+class SubjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +14,12 @@ class KelasController extends Controller
     public function index()
     {
         if (!request()->ajax()) {
-            return view('admin.kelas.index');
+            return view('admin.subject.index');
         }
 
         // Jika request adalah AJAX (dari JS kita), kirim data JSON
-        $kelases = kelas::orderBy('id', 'asc')->get();
-        return response()->json($kelases);
+        $subjects = Subject::orderBy('id', 'asc')->get();
+        return response()->json($subjects);
 
     }
 
@@ -29,7 +28,7 @@ class KelasController extends Controller
      */
     public function create()
     {
-        return view('admin.kelas.create');
+        return view('admin.subject.create');
     }
 
     /**
@@ -60,22 +59,22 @@ class KelasController extends Controller
             $file = $request->file('file');
             $image_name = time() . '-' . $file->getClientOriginalName();
             
-            $path = $file->storeAs('kelas', $image_name, 'public');
+            $path = $file->storeAs('subject', $image_name, 'public');
             
             $data['image'] = $image_name;
             unset($request['file']);
         }
             
-        Kelas::create($data);
+        Subject::create($data);
         
-        return redirect()->route('kelas.index')->with('success', 'Kelas berhasil ditambah!');
+        return redirect()->route('subject.index')->with('success', 'Subject berhasil ditambah!');
 
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Kelas $kelas)
+    public function show(Subject $subject)
     {
         //
     }
@@ -83,19 +82,16 @@ class KelasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(Subject $subject)
     {
-        $kelas = Kelas::find($id);
-        return view('admin.kelas.edit', compact('kelas'));
+        return view('admin.subject.edit', compact('subject'));
     }
     
     /**
      * Update the specified resource in storage.
     */
-    public function update(Request $request, $id)
-    {
-        $kelas = Kelas::find($id);
-        
+    public function update(Request $request, Subject $subject)
+    {        
         $request->validate([
             'judul' => 'required',
             'deskripsi' => 'nullable',
@@ -105,43 +101,41 @@ class KelasController extends Controller
         ]);
 
         if ($request->hasFile('file')) {
-            if ($kelas->image) { 
-                Storage::disk('public')->delete('kelas/' . $kelas->image);
+            if ($subject->image) { 
+                Storage::disk('public')->delete('subject/' . $subject->image);
             }
 
             $file = $request->file('file');
             $image_name = time() . '-' . $file->getClientOriginalName();
             
-            $path = $file->storeAs('kelas', $image_name, 'public');
+            $path = $file->storeAs('subject', $image_name, 'public');
             
-            $kelas->image = $image_name;
+            $subject->image = $image_name;
             unset($request['file']);
         }
         
-        $kelas->judul = $request->judul;
-        $kelas->deskripsi = $request->deskripsi;
-        $kelas->harga = $request->harga;
-        $kelas->isReady = $request->has('isReady') ? 'yes' : 'no';
-        $kelas->save();
+        $subject->judul = $request->judul;
+        $subject->deskripsi = $request->deskripsi;
+        $subject->harga = $request->harga;
+        $subject->isReady = $request->has('isReady') ? 'yes' : 'no';
+        $subject->save();
 
 
         
-        return redirect()->route('kelas.index')->with('success', 'Kelas berhasil diubah!');
+        return redirect()->route('subject.index')->with('success', 'Subject berhasil diubah!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Subject $subject)
     {
-        $kelas = Kelas::find($id);
-
-        if ($kelas->image) {
-            Storage::disk('public')->delete('kelas/' . $kelas->image);
+        if ($subject->image) {
+            Storage::disk('public')->delete('subject/' . $subject->image);
         }
 
-        Kelas::destroy($kelas->id);
-        return response()->json(['status' => 'Kelas berhasil dihapus!'])->with('success', 'Kelas berhasil dihapus!');
+        Subject::destroy($subject->id);
+        return response()->json(['status' => 'Subject berhasil dihapus!'])->with('success', 'Subject berhasil dihapus!');
 
 
     }

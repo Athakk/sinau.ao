@@ -1,18 +1,22 @@
 @extends('admin.template.app')
 
 @section('title')
-    Kelas
+    Materi Subject - {{ $subject->judul }}
 @endsection
 
 @section('content')
     <div class="col-xxl">
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h4 class="fw-bold m-0">Kelas</h4>
-                <div class="d-flex gap-1 justify-content-end align-items-center">
-                    <a href="{{ route('admin.kelas.create') }}">
+                <h4 class="fw-bold m-0"> Materi Subject - {{ $subject->judul }}</h4>
+                <div class="d-flex gap-2 justify-content-end align-items-center">
+                    <a href="{{ route('admin.subject.index') }}">
+                        <button type="button" class="btn btn btn-outline-danger" fdprocessedid="g81fsj"><i
+                                class='bx bxs-chevron-left'></i>&nbsp;Kembali</button>
+                    </a>
+                    <a href="{{ route('admin.subject.material.create', $subject->id) }}">
                         <button type="button" class="btn btn-primary">
-                            <span class="tf-icons bx bx-plus"></span>&nbsp;Tambah Kelas</button>
+                            <span class="tf-icons bx bx-plus"></span>&nbsp;Tambah Materi</button>
                     </a>
                 </div>
             </div>
@@ -24,8 +28,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Judul</th>
-                                <th>Status</th>
-                                <th>Harga</th>
+                                <th>Link Video</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -49,17 +52,16 @@
             loadData();
 
             function loadData() {
-                url = '/admin/kelas'
+                url = '/admin/subject/{{ $subject->id }}/materi'
 
                 $.ajax({
                     type: "GET",
                     url: url,
                     dataType: "json",
                     success: function(response) {
-                        console.log(response);
 
                         $('#myTable').DataTable({
-                            data: response,
+                            data: response.materials,
                             columns: [{
                                     data: null,
                                     render: function(data, type, row, meta) {
@@ -70,20 +72,13 @@
                                     data: 'judul'
                                 },
                                 {
-                                    data: 'isReady',
+                                    data: 'link_video',
+                                    orderable: false,
+                                    searchable: false,
                                     render: function(data) {
-                                        return data == "yes" ?
-                                            `<span class="badge rounded-pill bg-success">Ready</span>` :
-                                            `<span class="badge rounded-pill bg-danger">Not Ready</span>`;
-                                    }
-                                },
-                                {
-                                    data: 'harga',
-                                    render: function(data) {
-                                        return "Rp" + new Intl.NumberFormat(["ban",
-                                                "id"
-                                            ])
-                                            .format(data)
+                                        return `<a href="${data}">
+                                        ${data}
+                                        </a>`
                                     }
                                 },
                                 {
@@ -92,31 +87,28 @@
                                     searchable: false,
                                     render: function(data, type, row) {
 
-                                        var materiUrl =
-                                            "{{ route('admin.kelas.materi.index', ':id') }}";
                                         var editUrl =
-                                            "{{ route('admin.kelas.edit', ':id') }}";
+                                            "{{ route('admin.subject.material.edit', [':idSubject', ':idMateri']) }}";
                                         var deleteUrl =
-                                            "{{ route('admin.kelas.destroy', ':id') }}";
+                                            "{{ route('admin.subject.material.destroy', [':idSubject', ':idMateri']) }}";
 
 
-                                        materiUrl = materiUrl.replace(':id', data);
-                                        editUrl = editUrl.replace(':id', data);
-                                        deleteUrl = deleteUrl.replace(':id', data);
-
+                                        editUrl = editUrl.replace(':idSubject', response
+                                            .subject.id);
+                                        editUrl = editUrl.replace(':idMateri', data);
+                                        deleteUrl = deleteUrl.replace(':idSubject',
+                                            response
+                                            .subject.id);
+                                        deleteUrl = deleteUrl.replace(':idMateri',
+                                            data);
 
                                         return `
-                                        <a href="${materiUrl}">
-                                            <button type="button" class="btn btn-icon btn-info">
-                                                <span class="tf-icons bx bx-list-ul"></span>
-                                            </button>
-                                        </a>
                                         <a href="${editUrl}">
                                             <button type="button" class="btn btn-icon btn-warning">
                                                 <span class="tf-icons bx bx-edit"></span>
                                             </button>
                                         </a>
-                                        <button onclick="deleteKelas('${deleteUrl}')"
+                                        <button onclick="deleteSubject('${deleteUrl}')"
                                         type="submit" class="btn btn-icon btn-danger btn-delete">
                                         <span class="tf-icons bx bx-trash"></span>
                                         </button>
@@ -132,7 +124,7 @@
 
         });
 
-        function deleteKelas(deleteurl) {
+        function deleteSubject(deleteurl) {
             $(document).ready(function() {
 
                 $.ajaxSetup({

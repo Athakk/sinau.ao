@@ -174,14 +174,14 @@
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
             </li>
-            <li class="menu-item {{ explode('.', Route::current()->getName())[1] == 'kelas' ? 'active' : '' }}">
-              <a href="{{ route('admin.kelas.index') }}" class="menu-link">
+            <li class="menu-item {{ explode('.', Route::current()->getName())[1] == 'subject' ? 'active' : '' }}">
+              <a href="{{ route('admin.subject.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-book"></i>
-                <div data-i18n="Analytics">Kelas</div>
+                <div data-i18n="Analytics">subject</div>
               </a>
             </li>
-            <li class="menu-item {{ explode('.', Route::current()->getName())[1] == 'userKelas' ? 'active' : '' }}">
-              <a href="{{ route('admin.userKelas.index') }}" class="menu-link">
+            <li class="menu-item {{ explode('.', Route::current()->getName())[1] == 'usersubject' ? 'active' : '' }}">
+              <a href="{{ route('admin.userSubject.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-chart"></i>
                 <div data-i18n="Analytics">History Pembelian</div>
               </a>

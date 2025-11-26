@@ -4,19 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Materi extends Model
+class Material extends Model
 {
     protected $fillable = [
         'judul',
         'deskripsi',
         'image',
         'link_video',
-        'kelas_id'
+        'subject_id'
     ];
 
-    public function kelas()
+    public function subject()
     {
-        return $this->belongsTo(Kelas::class, 'kelas_id', 'id');
+        return $this->belongsTo(Kelas::class, 'subject_id', 'id');
     }
-
 }

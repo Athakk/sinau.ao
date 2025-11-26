@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserKelas extends Model
+class UserSubject extends Model
 {
     protected $fillable = [
         'user_id',
-        'kelas_id',
+        'subject_id',
     ];
 
     public function user()
@@ -16,9 +16,8 @@ class UserKelas extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function kelas()
+    public function subject()
     {
-        return $this->belongsTo(Kelas::class);
+        return $this->belongsTo(Subject::class);
     }
-
 }

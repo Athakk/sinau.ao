@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Kelas;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,13 +13,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kelas', function (Blueprint $table) {
+        Schema::create('user_subjects', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
-            $table->text('deskripsi');
-            $table->string('image')->nullable();
-            $table->enum('isReady', ['yes', 'no'])->default('no');
-            $table->double('harga', 13, 2)->default(0);
+            $table->date('tanggal');
+            
+            $table->foreignIdFor(User::class)->onDelete('restrict');
+            $table->foreignIdFor(Kelas::class)->onDelete('restrict');
+
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kelas');
+        Schema::dropIfExists('user_subjects');
     }
 };

@@ -1,13 +1,13 @@
 @extends('admin.template.app')
 
-@section('title', 'Kelas')
+@section('title', 'SUbject')
 
 @section('content')
     <div class="col-xxl">
         <div class="card mb-4">
             <div class="card-header d-flex align-items-center justify-content-between">
-                <h5 class="mb-4 text-gray-800">Tambah Kelas</h5>
-                <a href="{{ route('admin.kelas.index') }}">
+                <h5 class="mb-4 text-gray-800">Tambah Subject</h5>
+                <a href="{{ route('admin.subject.index') }}">
                     <button type="button" class="btn btn btn-outline-danger" fdprocessedid="g81fsj"><i
                             class='bx bxs-chevron-left'></i>&nbsp;Kembali</button>
                 </a>
@@ -22,7 +22,7 @@
                         </ul>
                     </div>
                 @endif
-                <form action="{{ route('admin.kelas.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('admin.subject.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-6">

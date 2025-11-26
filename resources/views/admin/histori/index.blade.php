@@ -25,7 +25,7 @@
                                 <th>#</th>
                                 <th>Nama User</th>
                                 <th>Email</th>
-                                <th>Judul Kelas</th>
+                                <th>Judul Subject</th>
                                 <th>Harga</th>
                                 {{-- <th>Actions</th> --}}
                             </tr>
@@ -50,7 +50,7 @@
             loadData();
 
             function loadData() {
-                url = '/admin/userKelas'
+                url = '/admin/userSubject'
 
                 $.ajax({
                     type: "GET",
@@ -74,10 +74,10 @@
                                     data: 'user.email'
                                 },
                                 {
-                                    data: 'kelas.judul'
+                                    data: 'subject.judul'
                                 },
                                 {
-                                    data: 'kelas.harga',
+                                    data: 'subject.harga',
                                     render: function(data) {
                                         return "Rp" + data
                                     }

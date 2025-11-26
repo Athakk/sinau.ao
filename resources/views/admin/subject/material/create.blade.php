@@ -1,16 +1,16 @@
 @extends('admin.template.app')
 
 @section('title')
-    Materi Kelas - {{ $kelas->judul }}
+    Materi Subject - {{ $subject->judul }}
 @endsection
 
 @section('content')
     <div class="col-xxl">
         <div class="card mb-4">
             <div class="card-header d-flex align-items-center justify-content-between">
-                <h5 class="mb-4 text-gray-800">Tambah Materi Kelas - {{ $kelas->judul }}
+                <h5 class="mb-4 text-gray-800">Tambah Materi Subject - {{ $subject->judul }}
                 </h5>
-                <a href="{{ route('admin.kelas.materi.index', $kelas->id) }}">
+                <a href="{{ route('admin.subject.material.index', $subject->id) }}">
                     <button type="button" class="btn btn btn-outline-danger" fdprocessedid="g81fsj"><i
                             class='bx bxs-chevron-left'></i>&nbsp;Kembali</button>
                 </a>
@@ -25,7 +25,7 @@
                         </ul>
                     </div>
                 @endif
-                <form action="{{ route('admin.kelas.materi.store', $kelas->id) }}" method="post"
+                <form action="{{ route('admin.subject.material.store', $subject->id) }}" method="post"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="row">
