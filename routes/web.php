@@ -7,6 +7,8 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserKelasController;
 use App\Http\Controllers\UserSubjectController;
+use Illuminate\Container\Attributes\Auth;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -25,3 +27,7 @@ Route::prefix('admin')->name('admin.')->group(function() {
         'userSubject' => UserSubjectController::class
     ]);
 });
+
+FacadesAuth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
