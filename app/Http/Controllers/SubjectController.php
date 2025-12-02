@@ -67,7 +67,7 @@ class SubjectController extends Controller
             
         Subject::create($data);
         
-        return redirect()->route('subject.index')->with('success', 'Subject berhasil ditambah!');
+        return redirect()->route('admin.subject.index')->with('success', 'Subject berhasil ditambah!');
 
     }
 
@@ -122,7 +122,7 @@ class SubjectController extends Controller
 
 
         
-        return redirect()->route('subject.index')->with('success', 'Subject berhasil diubah!');
+        return redirect()->route('admin.subject.index')->with('success', 'Subject berhasil diubah!');
     }
 
     /**
@@ -135,7 +135,7 @@ class SubjectController extends Controller
         }
 
         Subject::destroy($subject->id);
-        return response()->json(['status' => 'Subject berhasil dihapus!'])->with('success', 'Subject berhasil dihapus!');
+        return response()->json(['status' => 'Subject berhasil dihapus!', 'success' =>'Subject berhasil dihapus!']);
 
 
     }

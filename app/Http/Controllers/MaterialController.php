@@ -117,7 +117,7 @@ class MaterialController extends Controller
 
 
         
-        return redirect()->route('subject.index')->with('success', 'Material berhasil diubah!');
+        return redirect()->route('admin.subject.index')->with('success', 'Material berhasil diubah!');
     }
 
     /**
@@ -130,7 +130,7 @@ class MaterialController extends Controller
         }
 
         Material::destroy($material->id);
-        return response()->json(['status' => 'Material berhasil dihapus!'])->with('success', 'Material berhasil dihapus!');
+        return response()->json(['status' => 'Material berhasil dihapus!', 'success' =>'Materi berhasil dihapus!']);
 
     }
 }

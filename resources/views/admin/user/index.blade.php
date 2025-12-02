@@ -152,6 +152,14 @@
                                         .then((result) => {
                                             location.reload();
                                         });
+                                },
+                                error: function(response) {
+                                    swal(response.status, {
+                                            icon: "error",
+                                        })
+                                        .then((result) => {
+                                            location.reload();
+                                        });
                                 }
                             });
                         }

@@ -35,7 +35,7 @@ class UserController extends Controller
 
         User::create($request->all());
         
-        return redirect()->route('user.index')->with('success', 'User berhasil ditambah!');
+        return redirect()->route('admin.user.index')->with('success', 'User berhasil ditambah!');
 
     }
 
@@ -65,18 +65,14 @@ class UserController extends Controller
         $user->level = $request->level;
         $user->update();
         
-        return redirect()->route('user.index')->with('success', 'User berhasil diubah!');
+        return redirect()->route('admin.user.index')->with('success', 'User berhasil diubah!');
 
     }
 
     function destroy(User $user) {
-        // if (Auth::user()->id == $user->id) {
-        //     return redirect()->route('user.index')->with('error', 'Tidak bisa menghapus user!');
-        // }
-
 
         User::destroy($user->id);
-        return response()->json(['status' => 'User berhasil dihapus!'])->with('success', 'User berhasil dihapus!');
+        return response()->json(['status' => 'User berhasil dihapus!', 'success' =>'User berhasil dihapus!']);
 
     }
 }
