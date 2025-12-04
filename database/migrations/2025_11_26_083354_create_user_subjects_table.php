@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Kelas;
+use App\Models\Subject;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -18,7 +19,7 @@ return new class extends Migration
             $table->date('tanggal');
             
             $table->foreignIdFor(User::class)->onDelete('restrict');
-            $table->foreignIdFor(Kelas::class)->onDelete('restrict');
+            $table->foreignIdFor(Subject::class)->onDelete('restrict');
 
             $table->timestamps();
         });
