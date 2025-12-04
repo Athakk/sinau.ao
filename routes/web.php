@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontUserController;
 use App\Http\Controllers\KelasController;
@@ -12,17 +13,17 @@ use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Route::middleware(['guest'])->group(function () {
+    route::controller(AuthController::class)->group(function () {
+        Route::get('/login', 'showLogin')->name('login');
+        Route::post('/login', 'login')->name('authenticate');
+        Route::get('/register', 'showRegister')->name('register');
+        Route::post('/register', 'register')->name('registerStore');
+    });
 });
 
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
-
-Route::get('/register', function () {
-    return view('auth.register');
-})->name('register'); 
 
 
 Route::controller(FrontUserController::class)->group(function () {

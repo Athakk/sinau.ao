@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('whatsapp')->nullable();
-            $table->enum('level', ['user', 'admin'])->default('admin');
+            $table->enum('level', ['user', 'admin'])->default('user');
             $table->string('avatar')->nullable();
             $table->rememberToken();
             $table->timestamps();

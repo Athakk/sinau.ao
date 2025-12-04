@@ -53,12 +53,14 @@
                         <p class="text-muted">Selamat Datang Kembali.</p>
                     </div>
 
-                    <form action="#">
+                    <form action="/login" method="post">
+                     @csrf
+
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="E-mail">
+                            <input type="text" class="form-control form-control-lg bg-light fs-6" name="email" placeholder="Email">
                         </div>
                         <div class="input-group mb-3">
-                            <input type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Password">
+                            <input type="password" class="form-control form-control-lg bg-light fs-6" name="password" placeholder="Password">
                         </div>
 
                         <div class="input-group mb-3">
@@ -66,15 +68,8 @@
                         </div>
                     </form>
 
-                    <div class="input-group mb-4">
-                        <button class="btn btn-lg btn-light w-100 fs-6 border">
-                            <img src="{{ asset('frontuser/gambar/googleLogo.png') }}" alt="Google" style="width: 20px;" class="me-2">
-                            <small class="fw-bold text-secondary">Masuk Dengan Google</small>
-                        </button>
-                    </div>
-
                     <div class="regist mb-3 text-center">
-                        <p class="text-secondary">Kamu belum memiliki akun? <a href="/registrasi" class="text-decoration-none fw-bold" style="color: var(--sinau-green);">Registrasi</a></p>
+                        <p class="text-secondary">Kamu belum memiliki akun? <a href="/register" class="text-decoration-none fw-bold" style="color: var(--sinau-green);">Registrasi</a></p>
                     </div>
                 </div>
             </div>

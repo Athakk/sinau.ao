@@ -53,17 +53,18 @@
                         <p class="text-muted">Mulai perjalanan belajarmu bersama kami.</p>
                     </div>
 
-                    <form action="#">
+                    <form action="{{ route('registerStore') }}" method="post">
+                        @csrf
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Nama Lengkap" required>
+                            <input type="text" class="form-control form-control-lg bg-light fs-6" name="name" placeholder="Nama Lengkap" required>
                         </div>
 
                         <div class="input-group mb-3">
-                            <input type="email" class="form-control form-control-lg bg-light fs-6" placeholder="Alamat Email" required>
+                            <input type="email" class="form-control form-control-lg bg-light fs-6" name="email" placeholder="Alamat Email" required>
                         </div>
 
                         <div class="input-group mb-3">
-                            <input type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Password" required>
+                            <input type="password" class="form-control form-control-lg bg-light fs-6" name="password" placeholder="Password" required>
                         </div>
 
                         <div class="input-group mb-3">
