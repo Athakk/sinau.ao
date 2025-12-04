@@ -17,36 +17,40 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['guest'])->group(function () {
     route::controller(AuthController::class)->group(function () {
-        Route::get('/login', 'showLogin')->name('login');
-        Route::post('/login', 'login')->name('authenticate');
-        Route::get('/register', 'showRegister')->name('register');
-        Route::post('/register', 'register')->name('registerStore');
+        Route::get('/login', 'login')->name('login');
+        Route::post('/login', 'authenticate')->name('authenticate');
+        Route::get('/register', 'register')->name('register');
+        Route::post('/register', 'createRegister')->name('createRegister');
     });
 });
-
 
 
 Route::controller(FrontUserController::class)->group(function () {
     Route::get('/', 'home')->name('home');
     Route::get('/about', 'about')->name('about');
     Route::get('/program', 'subject')->name('subject');
-    Route::get('/program-saya', 'mySubject')->name('mySubject');
     Route::get('/review-program', 'subjectPreview')->name('subjectPreview');
-    Route::get('/materi', 'material')->name('material');
-});
 
-Route::prefix('admin')->name('admin.')->group(function() {  
-    Route::controller(DashboardController::class)->group(function () {
-        Route::get('/', 'index')->name('dashboard');    
+    Route::middleware('auth')->group(function() {
+        Route::get('/program-saya', 'mySubject')->name('mySubject');
+        Route::get('/materi', 'material')->name('material');
     });
 
-    Route::resources([
-        'user' => UserController::class,
-        'subject' => SubjectController::class,
-        'subject.material' => MaterialController::class,
-        'userSubject' => UserSubjectController::class
-    ]);
 });
 
-// FacadesAuth::routes();
+Route::middleware('admin')->group(function() {
+    Route::prefix('admin')->name('admin.')->group(function() {  
+        Route::controller(DashboardController::class)->group(function () {
+            Route::get('/', 'index')->name('dashboard');    
+        });
+    
+        Route::resources([
+            'user' => UserController::class,
+            'subject' => SubjectController::class,
+            'subject.material' => MaterialController::class,
+            'userSubject' => UserSubjectController::class
+        ]);
+    });
+});
+
 
