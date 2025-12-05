@@ -24,7 +24,14 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/')->with('success', 'Berhasil login'); // Ganti '/dashboard' dengan halaman tujuan setelah login
+
+            $user = User::where('email', $credentials['email'])->first();
+
+            if ($user->level == 'admin') {
+                return redirect()->intended('/admin')->with('success', 'Berhasil login');
+            } elseif ($user->level == 'user') {
+                return redirect()->intended('/')->with('success', 'Berhasil login');
+            }
         }
 
         return back()->withErrors([
@@ -40,15 +47,15 @@ class AuthController extends Controller
     public function createRegister(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:255',
+            'name' => 'required',
             'email' => 'required|unique:users',
-            'password' => 'required|min:5|max:255' 
+            'password' => 'required' 
         ]);
         
         
         $request['password'] = Hash::make($request['password']);
 
-        User::create($request);
+        User::create($request->all());
 
         return redirect()->route('login')->with('success', 'Registrasi berhasil! Silakan login');
     }

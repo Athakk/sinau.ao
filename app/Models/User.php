@@ -49,8 +49,8 @@ class User extends Authenticatable
         ];
     }
 
-    public function kelases()
+    public function subjects()
     {
-        return $this->belongsToMany(Kelas::class, 'user_kelas');
+        return $this->belongsToMany(Subject::class, 'user_subjects');
     }
 }

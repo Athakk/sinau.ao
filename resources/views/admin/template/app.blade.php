@@ -244,8 +244,8 @@
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            {{-- <span class="fw-semibold d-block">{{ Auth::user()->nama }}</span>
-                            <small class="text-muted">{{ Auth::user()->level == 'admin' ? 'Admin' : 'User' }}</small> --}}
+                            <span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
+                            <small class="text-muted">{{ Auth::user()->level == 'admin' ? 'Admin' : 'User' }}</small>
                           </div>
                         </div>
                       </a>
@@ -260,7 +260,7 @@
                       </a>
                     </li> --}}
                     <li>
-                      {{-- <a class="dropdown-item" href="{{ route('logout') }}"> --}}
+                      <a class="dropdown-item" href="{{ route('logout') }}">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                       </a>

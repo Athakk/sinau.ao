@@ -15,13 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::middleware(['guest'])->group(function () {
-    route::controller(AuthController::class)->group(function () {
+route::controller(AuthController::class)->group(function () {
+    Route::middleware(['guest'])->group(function () {
         Route::get('/login', 'login')->name('login');
         Route::post('/login', 'authenticate')->name('authenticate');
         Route::get('/register', 'register')->name('register');
         Route::post('/register', 'createRegister')->name('createRegister');
     });
+    Route::get('/logout', 'logout')->name('logout')->middleware('auth');
 });
 
 
@@ -34,6 +35,7 @@ Route::controller(FrontUserController::class)->group(function () {
     Route::middleware('auth')->group(function() {
         Route::get('/program-saya', 'mySubject')->name('mySubject');
         Route::get('/materi', 'material')->name('material');
+
     });
 
 });

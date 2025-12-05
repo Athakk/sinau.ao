@@ -2,31 +2,45 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Subject;
+use App\Models\UserSubject;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FrontUserController extends Controller
 {
     function home() {
-        return view('front.home');
+        $subject = Subject::take(3);
+        
+        return view('front.home', compact('subject'));
     }
-
+    
     function about() {
         return view('front.about');
     }
-
+    
     function subject() {
-        return view('front.program');
+        $subject = Subject::get();
+    
+        return view('front.program', compact('subject'));
     }
 
     function mySubject() {
-        return view('front.programSaya');
+        $user = Auth::user();
+        $mySubject = UserSubject::where('user_id', $user->id)->with('subject')->get();
+
+        return view('front.programSaya', compact('mySubject'));
     }
 
-    function subjectPreview() {
+    function subjectPreview(Subject $subject) {
+
         return view('front.reviewProgram');
     }
 
     function material() {
         return view('front.materi');
+    }
+
+    function buySubject() {
     }
 }
