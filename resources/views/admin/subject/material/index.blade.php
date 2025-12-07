@@ -52,7 +52,7 @@
             loadData();
 
             function loadData() {
-                url = '/admin/subject/{{ $subject->id }}/materi'
+                url = '/admin/subject/{{ $subject->id }}/material'
 
                 $.ajax({
                     type: "GET",

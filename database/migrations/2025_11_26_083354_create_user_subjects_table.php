@@ -20,7 +20,8 @@ return new class extends Migration
             
             $table->foreignIdFor(User::class)->onDelete('restrict');
             $table->foreignIdFor(Subject::class)->onDelete('restrict');
-
+            $table->string('status')->default('pending'); 
+            $table->string('snap_token')->nullable();
             $table->timestamps();
         });
     }

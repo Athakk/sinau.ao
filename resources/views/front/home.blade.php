@@ -1,97 +1,115 @@
 @extends('front.layouts.main')
 @section('title', 'Beranda')
 @section('extra-css')
-<style>
-    .hero-section {
-        background-color: #f3fcf9; /* Hijau sangat muda */
-        min-height: 85vh; 
-        display: flex;
-        align-items: center;
-        position: relative;
-        overflow: hidden;
-    }
+    <style>
+        .hero-section {
+            background-color: #f3fcf9;
+            /* Hijau sangat muda */
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .hero-blob {
-        position: absolute;
-        width: 500px;
-        height: 500px;
-        background: rgba(0, 153, 120, 0.1);
-        border-radius: 50%;
-        filter: blur(80px);
-        z-index: 0;
-    }
-    .blob-1 { top: -100px; right: -100px; }
-    .blob-2 { bottom: -100px; left: -100px; }
+        .hero-blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(0, 153, 120, 0.1);
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+        }
 
-    .hero-content { position: relative; z-index: 1; }
+        .blob-1 {
+            top: -100px;
+            right: -100px;
+        }
 
-    .stat-card {
-        border-left: 4px solid rgba(255,255,255,0.3);
-        padding-left: 20px;
-    }
+        .blob-2 {
+            bottom: -100px;
+            left: -100px;
+        }
 
-    /* --- COURSE CARD --- */
-    .course-card {
-        border: 1px solid #eee;
-        transition: all 0.3s ease;
-        border-radius: 16px;
-        overflow: hidden;
-    }
-    .course-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        border-color: var(--sinau-green);
-    }
-    .course-thumb {
-        height: 200px;
-        object-fit: cover;
-        width: 100%;
-    }
-    .mentor-img {
-        width: 35px;
-        height: 35px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 2px solid #fff;
-    }
-    .badge-category {
-        background-color: #e6f7f3;
-        color: var(--sinau-green);
-        font-weight: 600;
-        font-size: 0.8rem;
-        padding: 5px 12px;
-        border-radius: 20px;
-    }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
 
-    /* --- TOMBOL --- */
-    .btn-cta {
-        background-color: var(--sinau-green);
-        color: white;
-        padding: 12px 32px;
-        border-radius: 50px;
-        font-weight: 600;
-        transition: 0.3s;
-        box-shadow: 0 4px 15px rgba(0, 153, 120, 0.3);
-    }
-    .btn-cta:hover {
-        background-color: #008f70;
-        color: white;
-        transform: translateY(-2px);
-    }
-    .btn-outline-cta {
-        border: 2px solid var(--sinau-green);
-        color: var(--sinau-green);
-        padding: 10px 30px;
-        border-radius: 50px;
-        font-weight: 600;
-        transition: 0.3s;
-    }
-    .btn-outline-cta:hover {
-        background-color: var(--sinau-green);
-        color: white;
-    }
+        .stat-card {
+            border-left: 4px solid rgba(255, 255, 255, 0.3);
+            padding-left: 20px;
+        }
 
-</style>
+        /* --- COURSE CARD --- */
+        .course-card {
+            border: 1px solid #eee;
+            transition: all 0.3s ease;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-color: var(--sinau-green);
+        }
+
+        .course-thumb {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .mentor-img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #fff;
+        }
+
+        .badge-category {
+            background-color: #e6f7f3;
+            color: var(--sinau-green);
+            font-weight: 600;
+            font-size: 0.8rem;
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+
+        /* --- TOMBOL --- */
+        .btn-cta {
+            background-color: var(--sinau-green);
+            color: white;
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 153, 120, 0.3);
+        }
+
+        .btn-cta:hover {
+            background-color: #008f70;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-cta {
+            border: 2px solid var(--sinau-green);
+            color: var(--sinau-green);
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-outline-cta:hover {
+            background-color: var(--sinau-green);
+            color: white;
+        }
+    </style>
 @endsection
 
 {{-- 4. Konten Utama --}}
@@ -108,7 +126,8 @@
                         Bangun Karir Impianmu Bersama <span style="color: var(--sinau-green);">Sinau.ao</span>
                     </h1>
                     <p class="lead text-secondary mb-5">
-                        Tingkatkan skill digital dengan kurikulum industri terkini. Belajar coding, desain, dan bisnis langsung dari para ahli.
+                        Tingkatkan skill digital dengan kurikulum industri terkini. Belajar coding, desain, dan bisnis
+                        langsung dari para ahli.
                     </p>
                     <div class="d-flex gap-3">
                         <a href="{{-- route('register') --}}" class="btn btn-cta">Mulai Belajar</a>
@@ -118,8 +137,8 @@
                 </div>
 
                 <div class="col-lg-6 order-1 order-lg-2 text-center">
-                    <img src="{{ asset('frontuser/gambar/hero-illustration.svg') }}" 
-                         alt="Sinao.ao" class="img-fluid position-relative z-2">
+                    <img src="{{ asset('frontuser/gambar/hero-illustration.svg') }}" alt="Sinao.ao"
+                        class="img-fluid position-relative z-2">
                 </div>
             </div>
         </div>
@@ -139,7 +158,8 @@
                             <i class="bi bi-laptop fs-3"></i>
                         </div>
                         <h4 class="fw-bold mt-2">Belajar Fleksibel</h4>
-                        <p class="text-muted">Akses materi selamanya, kapan saja dan di mana saja sesuai kecepatan belajarmu sendiri.</p>
+                        <p class="text-muted">Akses materi selamanya, kapan saja dan di mana saja sesuai kecepatan belajarmu
+                            sendiri.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -148,7 +168,8 @@
                             <i class="bi bi-award fs-3"></i>
                         </div>
                         <h4 class="fw-bold mt-2">Sertifikat Resmi</h4>
-                        <p class="text-muted">Dapatkan sertifikat kompetensi yang valid dan bisa digunakan untuk melamar kerja.</p>
+                        <p class="text-muted">Dapatkan sertifikat kompetensi yang valid dan bisa digunakan untuk melamar
+                            kerja.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -157,7 +178,8 @@
                             <i class="bi bi-people fs-3"></i>
                         </div>
                         <h4 class="fw-bold mt-2">Mentor Praktisi</h4>
-                        <p class="text-muted">Dibimbing langsung oleh para ahli yang bekerja di perusahaan top teknologi.</p>
+                        <p class="text-muted">Dibimbing langsung oleh para ahli yang bekerja di perusahaan top teknologi.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -172,25 +194,32 @@
                     <h2 class="fw-bold">Program Populer</h2>
                     <p class="text-muted mb-0">Kelas pilihan yang paling banyak diminati bulan ini.</p>
                 </div>
-                <a href="{{ route('subject') }}" class="btn btn-outline-success rounded-pill d-none d-md-block">Lihat Semua</a>
+                <a href="{{ route('subject') }}" class="btn btn-outline-success rounded-pill d-none d-md-block">Lihat
+                    Semua</a>
             </div>
 
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                @foreach($subjects as $subject)
+                @foreach ($subjects as $subject)
                     <div class="col">
-                        <div class="card h-100 course-card bg-white">
-                            <img src="https://placehold.co/600x400/333/fff?text=Laravel+Mastery" class="course-thumb" alt="{{ $subject->judul }}">
+                        <a href="{{ route('subjectPreview', $subject->id) }}" class="card h-100 course-card bg-white"
+                            style="text-decoration: none">
+                            <img src="https://placehold.co/600x400/333/fff?text={{ urlencode($subject->judul) }}"
+                                class="course-thumb" alt="{{ $subject->judul }}">
                             <div class="card-body p-4">
-                                <h5 class="card-title fw-bold mb-3">{{$subject->judul}}</h5>
+                                <h5 class="card-title fw-bold mb-3">{{ $subject->judul }}</h5>
 
                                 <div class="d-flex justify-content-between align-items-center border-top pt-3">
                                     <div>
-                                        <small class="text-muted">Dibeli oleh 850+ Siswa</small>
+                                        <small class="text-muted">
+                                            Dibeli oleh {{ number_format($subject->users->count(), 0, ',', '.') }}+ Siswa
+                                        </small>
                                     </div>
-                                    <h5 class="fw-bold text-success mb-0">Rp {{ number_format($subject->harga, 0, ',', '.') }}</h5>
+                                    <h5 class="fw-bold text-success mb-0">
+                                        Rp {{ number_format($subject->harga, 0, ',', '.') }}
+                                    </h5>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 @endforeach
 

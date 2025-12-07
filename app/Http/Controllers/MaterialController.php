@@ -50,7 +50,7 @@ class MaterialController extends Controller
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
             'link_video' => $request->link_video,
-            'kelas_id' => $subject->id
+            'subject_id' => $subject->id
         ];
 
         

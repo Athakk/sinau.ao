@@ -30,18 +30,15 @@ Route::controller(FrontUserController::class)->group(function () {
     Route::get('/', 'home')->name('home');
     Route::get('/about', 'about')->name('about');
     Route::get('/program', 'subject')->name('subject');
-    Route::get('/review-program', 'subjectPreview')->name('subjectPreview');
-
+    Route::get('/preview-program/{subject}', 'subjectPreview')->name('subjectPreview');
+    
     Route::middleware('auth')->group(function() {
         Route::get('/program-saya', 'mySubject')->name('mySubject');
-        Route::get('/materi', 'material')->name('material');
+        Route::get('/materi/{material}', 'material')->name('material');
+        Route::post('/checkout/{subject}', 'checkout')->name('checkout');
 
     });
 });
-
-// ✅ ROUTE DETAIL PROGRAM — INI YANG LU MINTA
-Route::get('/program/{subject}', [FrontUserController::class, 'subjectPreview'])
-    ->name('subject.preview');
 
 
 
