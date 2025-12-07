@@ -94,6 +94,7 @@
                     </div>
 
                 </div>
+
                 <div class="col-lg-5">
                     <div class="sticky-sidebar">
                         <div class="buy-card">
@@ -108,15 +109,17 @@
                                     <div class="d-grid gap-2 mb-3">
                                         <button type="submit" class="btn btn-lg btn-success fw-bold py-3" style="background-color: var(--sinau-green); border: none;">
                                             Beli Kelas Ini Sekarang
+                                        </button>
                                     </div>
                                 </form>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>
-        </div>
+                            </div> 
+                        </div> 
+                    </div> 
+                </div> 
+
+            </div> 
+        </div> 
     </section>
 
 @endsection

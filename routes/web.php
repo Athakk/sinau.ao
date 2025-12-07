@@ -37,8 +37,13 @@ Route::controller(FrontUserController::class)->group(function () {
         Route::get('/materi', 'material')->name('material');
 
     });
-
 });
+
+// ✅ ROUTE DETAIL PROGRAM — INI YANG LU MINTA
+Route::get('/program/{subject}', [FrontUserController::class, 'subjectPreview'])
+    ->name('subject.preview');
+
+
 
 Route::middleware('admin')->group(function() {
     Route::prefix('admin')->name('admin.')->group(function() {  

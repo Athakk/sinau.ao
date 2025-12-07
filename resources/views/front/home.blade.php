@@ -176,54 +176,23 @@
             </div>
 
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                
-                <div class="col">
-                    <div class="card h-100 course-card bg-white">
-                        <img src="https://placehold.co/600x400/333/fff?text=Laravel+Mastery" class="course-thumb" alt="Laravel">
-                        <div class="card-body p-4">
-                            <h5 class="card-title fw-bold mb-3">Mastering Laravel 11: From Zero to Hero</h5>
+                @foreach($subjects as $subject)
+                    <div class="col">
+                        <div class="card h-100 course-card bg-white">
+                            <img src="https://placehold.co/600x400/333/fff?text=Laravel+Mastery" class="course-thumb" alt="{{ $subject->judul }}">
+                            <div class="card-body p-4">
+                                <h5 class="card-title fw-bold mb-3">{{$subject->judul}}</h5>
 
-                            <div class="d-flex justify-content-between align-items-center border-top pt-3">
-                                <div>
-                                    <small class="text-muted">Dibeli oleh 850+ Siswa</small>
+                                <div class="d-flex justify-content-between align-items-center border-top pt-3">
+                                    <div>
+                                        <small class="text-muted">Dibeli oleh 850+ Siswa</small>
+                                    </div>
+                                    <h5 class="fw-bold text-success mb-0">Rp {{ number_format($subject->harga, 0, ',', '.') }}</h5>
                                 </div>
-                                <h5 class="fw-bold text-success mb-0">Rp 299k</h5>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col">
-                    <div class="card h-100 course-card bg-white">
-                        <img src="https://placehold.co/600x400/61dafb/000?text=React+JS" class="course-thumb" alt="React">
-                        <div class="card-body p-4">
-                            <h5 class="card-title fw-bold mb-3">React JS: Build Modern Web Apps</h5>
-
-                            <div class="d-flex justify-content-between align-items-center border-top pt-3">
-                                <div>
-                                    <small class="text-muted">Dibeli oleh 850+ Siswa</small>
-                                </div>
-                                <h5 class="fw-bold text-success mb-0">Rp 349k</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card h-100 course-card bg-white">
-                        <img src="https://placehold.co/600x400/ff6b6b/fff?text=UI+UX+Design" class="course-thumb" alt="UI/UX">
-                        <div class="card-body p-4">
-                            <h5 class="card-title fw-bold mb-3">Complete UI/UX Design Bootcamp</h5>
-
-                            <div class="d-flex justify-content-between align-items-center border-top pt-3">
-                                <div>
-                                    <small class="text-muted">Dibeli oleh 850+ Siswa</small>
-                                </div>
-                                <h5 class="fw-bold text-success mb-0">Rp 199k</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
 
             </div>
 

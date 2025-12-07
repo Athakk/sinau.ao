@@ -16,6 +16,6 @@ class Material extends Model
 
     public function subject()
     {
-        return $this->belongsTo(Kelas::class, 'subject_id', 'id');
+        return $this->belongsTo(subject::class, 'subject_id', 'id');
     }
 }

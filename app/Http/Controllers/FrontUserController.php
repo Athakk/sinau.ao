@@ -10,31 +10,35 @@ use Illuminate\Support\Facades\Auth;
 class FrontUserController extends Controller
 {
     function home() {
-        $subject = Subject::take(3);
         
-        return view('front.home', compact('subject'));
+        $subjects = Subject::where('isReady', 1)->take(3)->get();
+        return view('front.home', compact('subjects'));
     }
-    
+
     function about() {
         return view('front.about');
     }
     
     function subject() {
-        $subject = Subject::get();
-    
-        return view('front.program', compact('subject'));
+        
+        $subjects = Subject::where('isReady', 1)->get();
+        return view('front.program', compact('subjects'));
     }
-
+    
     function mySubject() {
         $user = Auth::user();
-        $mySubject = UserSubject::where('user_id', $user->id)->with('subject')->get();
+        $mySubject = UserSubject::where('user_id', $user->id)
+                                ->with('subject')
+                                ->get();
 
         return view('front.programSaya', compact('mySubject'));
     }
 
     function subjectPreview(Subject $subject) {
 
-        return view('front.reviewProgram');
+        $subject->load('materials');
+
+        return view('front.reviewProgram', compact('subject'));
     }
 
     function material() {
@@ -42,5 +46,7 @@ class FrontUserController extends Controller
     }
 
     function buySubject() {
+        
     }
 }
+
