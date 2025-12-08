@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontUserController;
@@ -12,6 +11,7 @@ use App\Http\Controllers\UserSubjectController;
 use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -31,12 +31,13 @@ Route::controller(FrontUserController::class)->group(function () {
     Route::get('/about', 'about')->name('about');
     Route::get('/program', 'subject')->name('subject');
     Route::get('/preview-program/{subject}', 'subjectPreview')->name('subjectPreview');
+    Route::post('/midtrans/notification', 'notification')->name('notification');
     
     Route::middleware('auth')->group(function() {
         Route::get('/program-saya', 'mySubject')->name('mySubject');
         Route::get('/materi/{material}', 'material')->name('material');
         Route::post('/checkout/{subject}', 'checkout')->name('checkout');
-
+        Route::get('/payment-success', 'paymentSuccess')->name('paymentSuccess');
     });
 });
 

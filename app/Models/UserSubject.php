@@ -9,7 +9,12 @@ class UserSubject extends Model
     protected $fillable = [
         'user_id',
         'subject_id',
-    ];
+        'tanggal',
+        'harga',
+        'order_id',
+        'transaction_status',
+        'snap_token'
+    ]; 
 
     public function user()
     {

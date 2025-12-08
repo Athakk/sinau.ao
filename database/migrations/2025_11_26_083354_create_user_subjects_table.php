@@ -17,10 +17,11 @@ return new class extends Migration
         Schema::create('user_subjects', function (Blueprint $table) {
             $table->id();
             $table->date('tanggal');
-            
+            $table->string('order_id')->nullable();
             $table->foreignIdFor(User::class)->onDelete('restrict');
             $table->foreignIdFor(Subject::class)->onDelete('restrict');
-            $table->string('status')->default('pending'); 
+            $table->double('harga', 13, 2)->default(0);
+            $table->string('transaction_status')->nullable();
             $table->string('snap_token')->nullable();
             $table->timestamps();
         });
