@@ -92,16 +92,6 @@
                 Temukan kelas yang sesuai dengan minat dan tujuan karirmu. Dari pemula hingga mahir, semua ada di sini.
             </p>
 
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <form action="#" class="d-flex">
-                        <input type="text" class="form-control form-control-lg search-input" placeholder="Cari materi...">
-                        <button class="btn btn-lg search-btn" type="button">
-                            <i class="bi bi-search"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
         </div>
     </section>
 

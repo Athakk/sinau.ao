@@ -131,7 +131,7 @@
                     </p>
                     <div class="d-flex gap-3">
                         <a href="{{-- route('register') --}}" class="btn btn-cta">Mulai Belajar</a>
-                        <a href="{{ route('subject') }}" class="btn btn-outline-cta">Lihat Program</a>
+                        <a href="{{ route('mySubject') }}" class="btn btn-outline-cta">Lihat Program</a>
                     </div>
 
                 </div>
@@ -233,7 +233,7 @@
         <div class="container py-5 text-center text-white">
             <h2 class="display-6 fw-bold mb-3">Siap Menjadi Talenta Digital?</h2>
             <p class="lead mb-4 text-white-50">Bergabung dengan ribuan siswa lainnya dan mulai belajar hari ini.</p>
-            <a href="/registrasi" class="btn btn-light btn-lg rounded-pill px-5 fw-bold text-success shadow">
+            <a href="/register" class="btn btn-light btn-lg rounded-pill px-5 fw-bold text-success shadow">
                 Daftar Akun Gratis
             </a>
         </div>

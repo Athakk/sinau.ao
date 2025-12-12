@@ -81,13 +81,6 @@
         <br>
         <br>
 
-        <div class="d-flex justify-content-center gap-2 mb-5 flex-wrap">
-            <button class="btn btn-dark rounded-pill px-4 btn-sm">Semua Program</button>
-            <button class="btn btn-outline-secondary rounded-pill px-4 btn-sm">Sedang Dipelajari</button>
-            <button class="btn btn-outline-secondary rounded-pill px-4 btn-sm">Belum Dimulai</button>
-            <button class="btn btn-outline-secondary rounded-pill px-4 btn-sm">Selesai</button>
-        </div>
-
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-5">
             @foreach ($mySubject as $item)
                 <div class="col">
