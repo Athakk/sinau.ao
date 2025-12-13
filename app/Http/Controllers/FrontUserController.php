@@ -83,6 +83,9 @@ class FrontUserController extends Controller
 
     public function checkout(Request $request, Subject $subject)
     {
+        if (empty(Auth::user())) {
+            return view('login');
+        }
 
         $this->initMidtrans();
 

@@ -15,7 +15,8 @@ class UserSeeder extends Seeder
     {
         $data = 
         [
-            [ 'id' => 1, 'name' => 'Administrator', 'email' => 'admin@gmail.com', 'password' => bcrypt('admin123'),'whatsapp' => '01234567890','level' => 'admin', 'avatar' => '-']
+            [ 'id' => 1, 'name' => 'Administrator', 'email' => 'admin@gmail.com', 'password' => bcrypt('admin123'),'whatsapp' => '01234567890','level' => 'admin', 'avatar' => '-'],
+            [ 'id' => 2, 'name' => 'Alfian', 'email' => 'alfian@gmail.com', 'password' => bcrypt('123'),'whatsapp' => '01234567890','level' => 'user', 'avatar' => '-']
         ];
 
         foreach ($data as $value) {

@@ -136,10 +136,8 @@
                 width: 100%;
             }
         }
-
-
-        </style>
-        @yield('extra-css')
+    </style>
+    @yield('extra-css')
 </head>
 
 <body>
@@ -149,6 +147,7 @@
 
     <main class="d-flex flex-column min-vh-100">
         @yield('content')
+
     </main>
 
 

@@ -8,7 +8,8 @@
                 </a>
                 <h6 class="fw-bold mb-3 text-white">PT Sinau Inovasi Digital</h6>
                 <p class="small text-white-50 mb-4 pe-lg-5" style="line-height: 1.8;">
-                    Sinau.ao adalah platform pembelajaran untuk membantu kamu menjadi digital talent terbaik dengan kurikulum industri terkini.
+                    Sinau.ao adalah platform pembelajaran untuk membantu kamu menjadi digital talent terbaik dengan
+                    kurikulum industri terkini.
                 </p>
                 <div class="d-flex align-items-start mb-3 small text-white-50">
                     <i class="bi bi-geo-alt-fill me-3 text-white fs-6 mt-1"></i>
@@ -23,26 +24,32 @@
             <div class="col-6 col-lg-2 mb-4 mb-lg-0">
                 <h6 class="fw-bold mb-3 text-white">Program</h6>
                 <ul class="list-unstyled small">
-                    <li class="mb-2"><a href="#" class="text-decoration-none text-white-50 footer-link">Online Course</a></li>
-                    <li class="mb-2"><a href="#" class="text-decoration-none text-white-50 footer-link">Bootcamp</a></li>
+                    <li class="mb-2"><a href="#" class="text-decoration-none text-white-50 footer-link">Online
+                            Course</a></li>
+                    <li class="mb-2"><a href="#"
+                            class="text-decoration-none text-white-50 footer-link">Bootcamp</a></li>
                 </ul>
             </div>
 
             <div class="col-6 col-lg-2 mb-4 mb-lg-0">
                 <h6 class="fw-bold mb-3 text-white">Company</h6>
                 <ul class="list-unstyled small">
-                    <li class="mb-2"><a href="#" class="text-decoration-none text-white-50 footer-link">Tentang Kami</a></li>
-                    <li class="mb-2"><a href="#" class="text-decoration-none text-white-50 footer-link">Komunitas</a></li>
+                    <li class="mb-2"><a href="#" class="text-decoration-none text-white-50 footer-link">Tentang
+                            Kami</a></li>
+                    <li class="mb-2"><a href="#"
+                            class="text-decoration-none text-white-50 footer-link">Komunitas</a></li>
                 </ul>
             </div>
 
             <div class="col-lg-3">
                 <h6 class="fw-bold mb-3 text-white">Support</h6>
                 <ul class="list-unstyled small mb-4">
-                    <li class="mb-2"><a href="#" class="text-decoration-none text-white-50 footer-link">Hubungi Kami</a></li>
-                    <li class="mb-2"><a href="#" class="text-decoration-none text-white-50 footer-link">Kebijakan Privasi</a></li>
+                    <li class="mb-2"><a href="#" class="text-decoration-none text-white-50 footer-link">Hubungi
+                            Kami</a></li>
+                    <li class="mb-2"><a href="#"
+                            class="text-decoration-none text-white-50 footer-link">Kebijakan Privasi</a></li>
                 </ul>
-                
+
             </div>
         </div>
 

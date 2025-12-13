@@ -104,11 +104,9 @@
     <section class="container py-4 py-lg-5">
 
         <div class="row g-4">
-
             <div class="col-lg-8 order-2 order-lg-1">
-
                 <div class="ratio ratio-16x9 bg-dark">
-                    <iframe src="{{ $material->link_video }}" title="{{ $material->judul }}" allowfullscreen>
+                    <iframe src="{{ $material->embed_url }}" title="{{ $material->judul }}" allowfullscreen>
                     </iframe>
                 </div>
 

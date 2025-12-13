@@ -23,8 +23,10 @@
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>Tanggal</th>
                                 <th>Nama User</th>
                                 <th>Email</th>
+                                <th>Status</th>
                                 <th>Judul Subject</th>
                                 <th>Harga</th>
                                 {{-- <th>Actions</th> --}}
@@ -68,10 +70,22 @@
                                     }
                                 },
                                 {
+                                    data: 'tanggal'
+                                },
+                                {
                                     data: 'user.name'
                                 },
                                 {
                                     data: 'user.email'
+                                },
+                                {
+                                    data: 'transaction_status',
+                                    render: function(data) {
+                                        return data == "success" ?
+                                            `<span class="badge rounded-pill bg-success">Success</span>` :
+                                            `<span class="badge rounded-pill bg-warning">Pending</span>`;
+                                    }
+
                                 },
                                 {
                                     data: 'subject.judul'
@@ -79,7 +93,10 @@
                                 {
                                     data: 'subject.harga',
                                     render: function(data) {
-                                        return "Rp" + data
+                                        return "Rp" + new Intl.NumberFormat(["ban",
+                                                "id"
+                                            ])
+                                            .format(data)
                                     }
                                 },
                                 // {

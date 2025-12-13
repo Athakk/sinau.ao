@@ -33,8 +33,7 @@
     <meta name="description" content="" />
 
     <!-- Icon -->
-    <link rel="shortcut icon" type="image/x-icon"
-        href="https://freshcart.codescandy.com/assets/images/favicon/favicon.ico">
+    <link rel="icon" href="{{ asset('frontuser/gambar/favicon.png') }}" type="image/png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

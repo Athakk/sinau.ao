@@ -15,8 +15,6 @@ class UserSubjectController extends Controller
         if (!request()->ajax()) {
             return view('admin.histori.index');
         }
-        
-        // Jika request adalah AJAX (dari JS kita), kirim data JSON
         $data = UserSubject::with(['user', 'subject'])->orderBy('id', 'desc')->get();
         return response()->json($data);
     }

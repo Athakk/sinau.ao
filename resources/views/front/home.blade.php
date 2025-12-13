@@ -198,12 +198,13 @@
                     Semua</a>
             </div>
 
+
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 @foreach ($subjects as $subject)
                     <div class="col">
                         <a href="{{ route('subjectPreview', $subject->id) }}" class="card h-100 course-card bg-white"
                             style="text-decoration: none">
-                            <img src="https://placehold.co/600x400/333/fff?text={{ urlencode($subject->judul) }}"
+                            <img src="https://placehold.co/600x400/{{ $subject->background_color }}/fff?text={{ urlencode($subject->judul) }}"
                                 class="course-thumb" alt="{{ $subject->judul }}">
                             <div class="card-body p-4">
                                 <h5 class="card-title fw-bold mb-3">{{ $subject->judul }}</h5>
@@ -228,15 +229,16 @@
         </div>
     </section>
 
-
-    <section class="py-5" style="background: var(--sinau-green);">
-        <div class="container py-5 text-center text-white">
-            <h2 class="display-6 fw-bold mb-3">Siap Menjadi Talenta Digital?</h2>
-            <p class="lead mb-4 text-white-50">Bergabung dengan ribuan siswa lainnya dan mulai belajar hari ini.</p>
-            <a href="/register" class="btn btn-light btn-lg rounded-pill px-5 fw-bold text-success shadow">
-                Daftar Akun Gratis
-            </a>
-        </div>
-    </section>
+    @if (empty(Auth::user()))
+        <section class="py-5" style="background: var(--sinau-green);">
+            <div class="container py-5 text-center text-white">
+                <h2 class="display-6 fw-bold mb-3">Siap Menjadi Talenta Digital?</h2>
+                <p class="lead mb-4 text-white-50">Bergabung dengan ribuan siswa lainnya dan mulai belajar hari ini.</p>
+                <a href="/register" class="btn btn-light btn-lg rounded-pill px-5 fw-bold text-success shadow">
+                    Daftar Akun Gratis
+                </a>
+            </div>
+        </section>
+    @endif
 
 @endsection
